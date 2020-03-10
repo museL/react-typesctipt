@@ -1,6 +1,7 @@
-import React from 'react';
+import * as React from 'react'
 import logo from './logo.svg';
 import './App.css';
+import { Hello } from "./components/Hello";
 // export interface Props {
 // 	name: string;
 // 	enthusiasmLevel?: number;
@@ -19,6 +20,7 @@ class App extends React.Component<object> {
 		  <div className="greeting">
 			Hello 
 		  </div>
+		  <Hello name="1213" enthusiasmLevel={10}></Hello>
 		</div>
 	  );
 	}

@@ -1,19 +1,39 @@
 import * as React from 'react'
 
 export interface Props {
-    name :string;
-    enthusiasmLevel?:number;
+    name: string;
+    enthusiasmLevel?: number;
 }
 
 interface State {
     currentEnthusiasm: number;
 }
 
-class Hello extends React.Component<Props,State>{
+export class Hello extends React.Component<Props, State>{
     constructor(props: Props) {
         super(props);
         this.state = {
             currentEnthusiasm: props.enthusiasmLevel || 1
         }
     }
+
+    render() {
+        const { name, enthusiasmLevel = 1 } = this.props;
+
+        if (enthusiasmLevel <= 0) {
+            throw new Error('You could be a little more enthusiastic. :D');
+        }
+
+        return (
+            <div className="hello">
+                <div className="greeting">
+                    Hello {name + getExclamationMarks(enthusiasmLevel)}
+                </div>
+            </div>
+        );
+    }
+}
+
+function getExclamationMarks(numChars: number) {
+    return Array(numChars + 1).join('!');
 }
